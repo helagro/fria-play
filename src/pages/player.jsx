@@ -1,11 +1,11 @@
 /*index.jsx*/
 import React from "react";
+import MobileAppBar from "../components/mobile-app-bar"
 //Functional Component 
 const player = () => {
   return (
     <div>
-      <h3>Welcome to the React Router Tutorial</h3>
-      <small>Main Page</small>
+      <MobileAppBar/>
     </div>
   );
 };

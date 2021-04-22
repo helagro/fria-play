@@ -1,0 +1,5 @@
+.expandingArea{
+    background-color: var(--main-bright);
+    height: 200px;
+    width: 100%;
+}

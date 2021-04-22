@@ -1,3 +1,17 @@
-.appBarBar{
-    background-color: aqua;
+:root{
+	--app-bar-height: 3em;
+}
+
+
+.appBarBar {
+	background-color: var(--main-bright); 
+	display: grid;
+	grid-template-columns: var(--app-bar-height) auto var(--app-bar-height);
+    height: var(--app-bar-height);
+    width: 70%;
+} 
+.appBarIcon {
+	color: white;
+    height: 100%;
+	width: var(--app-bar-height);
 }
