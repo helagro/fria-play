@@ -1,8 +1,9 @@
 import React, { FunctionComponent } from 'react';
+import "./style/mobile-app-bar.css"
 
 function MobileAppBar(){
     return (
-        <div>
+        <div className="appBarBar">
             <h2>
                 This is an app bar 
             </h2>
