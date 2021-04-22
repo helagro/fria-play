@@ -1,3 +1,7 @@
+.expandableMobileAppBar{
+    width: 100%;
+}
+
 .expandingArea{
     background-color: var(--main-bright);
     height: 200px;

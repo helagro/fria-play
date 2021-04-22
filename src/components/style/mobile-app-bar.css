@@ -8,7 +8,7 @@
 	display: grid;
 	grid-template-columns: var(--app-bar-height) auto var(--app-bar-height);
     height: var(--app-bar-height);
-    width: 70%;
+    width: 100%;
 } 
 .appBarIcon {
 	color: white;

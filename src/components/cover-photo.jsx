@@ -6,7 +6,8 @@ const coverPhotoStyle= {
     width: "70px"
 }
 
-function CoverPhoto(){
+function CoverPhoto(props){
+    console.log(props.image)
     return (
         <img src={image} style={coverPhotoStyle}/>
     )
