@@ -1,7 +1,6 @@
-:root{
+ :root{
 	--app-bar-height: 3em;
-}
-
+} 
 
 .appBarBar {
 	background-color: var(--main-bright); 
@@ -12,6 +11,6 @@
 } 
 .appBarIcon {
 	color: white;
-    height: 100%;
+    height: var(--app-bar-height);
 	width: var(--app-bar-height);
 }

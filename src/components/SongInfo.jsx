@@ -1,10 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import CoverPhoto from './CoverPhoto';
-import "./style/SongInfo.css"
+import style from "./style/SongInfo.module.css"
+
 
 function SongInfo(props){
     return (
-        <div className="songInfoContainer" style={coverPhotoGroupStyle}>
+        <div >
             <CoverPhoto image={props.image}/>
         </div>
     )

@@ -1,7 +1,7 @@
 /*index.jsx*/
 import React from "react";
-import ExpandableMobileAppBar from "../components/expandable-mobile-app-bar";
-import RoundedTextAndImageButton from "../components/rounded-text-and-image-btn";
+import ExpandableMobileAppBar from "../components/ExpandableMobileAppBar";
+import RoundedTextAndImageButton from "../components/RoundedTextAndImageButton";
 //Functional Component 
 
 const playlistPlayButtonGroupStyle = {

@@ -1,16 +1,11 @@
 import React, { FunctionComponent } from 'react';
 import image from "./img/ic-arrows-left.svg"
-import "./style/CoverPhoto.css"
+import style from "./style/CoverPhoto.module.css"
 
-const coverPhotoStyle= {
-    height: "70px",
-    width: "70px"
-}
 
 function CoverPhoto(props){
-    console.log(props.image)
     return (
-        <img src={props.image} style={coverPhotoStyle}/>
+        <img src={props.image} className={style.CoverPhotoImage}/>
     )
 }
 

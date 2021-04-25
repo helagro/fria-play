@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import CoverPhoto from './CoverPhoto';
+import "./style/RoundedTextAndImageButton.module.css"
 
 const buttonStyle = {
     backgroundColor:"#FAFAFA",
