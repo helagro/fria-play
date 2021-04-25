@@ -5,8 +5,10 @@ import style from "./style/SongInfo.module.css"
 
 function SongInfo(props){
     return (
-        <div >
-            <CoverPhoto image={props.image}/>
+        <div className={style.container}>
+            <CoverPhoto image={props.image} className={style.photo}/>
+            <p className={style.title}>Song title</p>
+            <p className={style.info}>Artist</p>
         </div>
     )
 }

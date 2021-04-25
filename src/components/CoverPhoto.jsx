@@ -5,7 +5,7 @@ import style from "./style/CoverPhoto.module.css"
 
 function CoverPhoto(props){
     return (
-        <img src={props.image} className={style.CoverPhotoImage}/>
+        <img src={props.image} className={[style.CoverPhotoImage, props.className].join(" ")}/>
     )
 }
 

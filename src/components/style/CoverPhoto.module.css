@@ -1,5 +1,5 @@
 .CoverPhotoImage{
-    height: 70px;
-    width: 70px;
     object-fit: contain;
+    height: 100%;
+    width: 100%;
 }

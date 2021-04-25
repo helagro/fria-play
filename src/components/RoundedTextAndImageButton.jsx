@@ -1,21 +1,12 @@
 import React, { FunctionComponent } from 'react';
 import CoverPhoto from './CoverPhoto';
-import "./style/RoundedTextAndImageButton.module.css"
+import style from "./style/RoundedTextAndImageButton.module.css"
 
-const buttonStyle = {
-    backgroundColor:"#FAFAFA",
-    borderRadius: "4em",
-    height: "3.5em",
-}
-
-const buttonTitleStyle = {
-    textAlign:"center",
-}
 
 function RoundedTextAndImageButton(props){
     return (
-        <div className="rounded-button" style={buttonStyle}>
-            <p style={buttonTitleStyle}>{props.title}</p>
+        <div className={style.roundedButton}>
+            <p>{props.title}</p>
         </div>
     )
 }

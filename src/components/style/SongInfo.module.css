@@ -1,0 +1,21 @@
+.container {
+    height: 10em;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+.photo{
+    background-color: green;
+    grid-row: 1 / span 2;
+}
+
+.title {
+    background-color: red;
+}
+
+.info{
+    background-color: aqua;
+    grid-column: 2;
+    grid-row: 2;
+}

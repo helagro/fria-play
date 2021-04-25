@@ -1,0 +1,9 @@
+.roundedButton{
+    border-radius: 4em;
+    height: 3.5em;
+    background-color: #fafafa;
+}
+
+p{
+    text-align: center;
+}
