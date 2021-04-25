@@ -4,7 +4,7 @@ import CoverPhoto from './cover-photo';
 const coverPhotoGroupStyle = {
     display: "grid",
     gridTemplateColumns: "auto auto",
-    justifyContent:"center"
+    justifyContent:"center",
 }
 
 function PlaylistCover(props){
