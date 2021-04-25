@@ -7,17 +7,12 @@ import CoverPhoto from './cover-photo';
 
 
 function ExpandableMobileAppBar(){
+    let songImages = [survival, survival, survival, survival]
     return (
         <div className="expandableMobileAppBar">
             <MobileAppBar/>
             <div className="expandingArea">
-                <PlaylistCover>
-                    <CoverPhoto image={survival}/>
-                    <CoverPhoto src={survival}/>
-                    <CoverPhoto/>
-                    <CoverPhoto/>
-                    <h1>fe</h1>
-                </PlaylistCover>
+                <PlaylistCover images={songImages}/>
             </div>
         </div>
     )

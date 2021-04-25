@@ -9,7 +9,7 @@ const coverPhotoStyle= {
 function CoverPhoto(props){
     console.log(props.image)
     return (
-        <img src={image} style={coverPhotoStyle}/>
+        <img src={props.image} style={coverPhotoStyle}/>
     )
 }
 
