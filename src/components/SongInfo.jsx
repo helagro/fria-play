@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
-import CoverPhoto from './cover-photo';
-import "./style/song-info.css"
+import CoverPhoto from './CoverPhoto';
+import "./style/SongInfo.css"
 
 function SongInfo(props){
     return (

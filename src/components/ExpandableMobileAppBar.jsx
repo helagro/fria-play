@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from 'react';
-import "./style/expandable-mobile-app-bar.css"
-import MobileAppBar from './mobile-app-bar';
-import PlaylistCover from './playlist-cover';
+import "./style/ExpandableMobileAppBar.css"
+import MobileAppBar from './MobileAppBar';
+import PlaylistCover from './PlaylistCover';
 import survival from "./img/survival.jpg";
-import CoverPhoto from './cover-photo';
 
 
 function ExpandableMobileAppBar(){

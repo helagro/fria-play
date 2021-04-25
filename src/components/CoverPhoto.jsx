@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import image from "./img/ic-arrows-left.svg"
+import "./style/CoverPhoto.css"
 
 const coverPhotoStyle= {
     height: "70px",

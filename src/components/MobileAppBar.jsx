@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import "./style/mobile-app-bar.css"
+import "./style/MobileAppBar.css"
 import backArrow from "./img/ic-arrows-left.svg"
 import menu from "./img/ic-actions-menu.svg"
 

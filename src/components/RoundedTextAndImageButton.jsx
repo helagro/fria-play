@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react';
-import CoverPhoto from './cover-photo';
+import CoverPhoto from './CoverPhoto';
 
 const buttonStyle = {
     backgroundColor:"#FAFAFA",
