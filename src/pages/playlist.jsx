@@ -9,6 +9,7 @@ import shuffle from "../components/img/shuffle.svg"
 import style from "./style/Playlist.module.css"
 import backArrow from "../components/img/ic-arrows-left.svg"
 import moreIcon from "../components/img/ic-actions-more-2.svg"
+import MyNavBar from "../components/MyNavBar"
 
 //Functional Component 
 
@@ -23,6 +24,7 @@ const PlayList = () => {
         <RoundedTextAndImageButton title="SHUFFLE" image={shuffle}/>
       </div>
       <SongList/>
+      <MyNavBar/>
     </div>
   );
 };

@@ -1,9 +1,8 @@
 .container{
     display: grid;
+    gap: 0.061em;
     grid-template-columns: 1fr 1fr;
-    height: 11em;
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     margin: auto;
-    width: 11em;
-    gap: 0.061em;
 }

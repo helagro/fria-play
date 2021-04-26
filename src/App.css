@@ -4,6 +4,8 @@
   --normal-text: #484848;
   --bright-text: #7C7C7C;
   --darker-field: #FAFAFA;
+
+  --app-bar-height: 3em;
 }
 
 @font-face {

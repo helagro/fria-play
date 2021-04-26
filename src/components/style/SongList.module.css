@@ -3,4 +3,6 @@
     margin: 1em 1.6em 0 1.6em;
     display: grid;
     row-gap: 1.1em;
+
+    height: 1000px;
 }
