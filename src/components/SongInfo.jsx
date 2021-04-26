@@ -7,8 +7,12 @@ function SongInfo(props){
     return (
         <div className={style.container}>
             <CoverPhoto image={props.image} className={style.photo}/>
-            <p className={style.title}>Song title</p>
-            <p className={style.info}>Artist</p>
+            <div className={style.textContainer}>
+                <p className={style.title}>{props.title}</p>   
+            </div>
+            <div className={style.textContainer}>
+                <p className={style.info}>{props.artist}</p>
+            </div>
         </div>
     )
 }

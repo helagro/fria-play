@@ -3,7 +3,7 @@ import React from "react";
 import ExpandableMobileAppBar from "../components/ExpandableMobileAppBar";
 import RoundedTextAndImageButton from "../components/RoundedTextAndImageButton";
 import SongInfo from "../components/SongInfo";
-import Survival from "../components/img/survival.jpg"
+import SongList from "../components/SongList"
 
 //Functional Component 
 
@@ -21,7 +21,7 @@ const PlayList = () => {
         <RoundedTextAndImageButton title="PLAY"/>
         <RoundedTextAndImageButton title="SHUFFLE"/>
       </div>
-      <SongInfo image={Survival}/>
+      <SongList/>
     </div>
   );
 };

@@ -1,8 +1,11 @@
+
+
 .container {
-    height: 10em;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 5em 3fr;
     grid-template-rows: 1fr 1fr;
+    height: 5em;
+    column-gap: 0.4em;
 }
 
 .photo{
@@ -10,12 +13,27 @@
     grid-row: 1 / span 2;
 }
 
+
+.textContainer{
+    background-color: yellow;
+    border-color: teal;
+    border-style: dotted;
+    border-width: 2px;
+    display: flex;
+}
+
+.textContainer p{
+    margin:0;
+}
+
 .title {
-    background-color: red;
+    align-self: flex-end;
+    position: relative;
 }
 
 .info{
-    background-color: aqua;
+    align-self: flex-start;
+    text-transform: uppercase;
     grid-column: 2;
     grid-row: 2;
 }

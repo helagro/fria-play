@@ -1,9 +1,12 @@
+
+
 .roundedButton{
     border-radius: 4em;
     height: 3.5em;
-    background-color: #fafafa;
+    background-color: var(--darker-field);
 }
 
 p{
     text-align: center;
+    color: var(--dark-text)
 }
