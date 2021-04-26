@@ -1,12 +1,24 @@
 
 
 .roundedButton{
-    border-radius: 4em;
-    height: 3.5em;
     background-color: var(--darker-field);
+    border-radius: 0.8em;
+    display: grid;
+    grid-template-columns: auto auto;
+    height: 2.6em;
+    column-gap: 0.4em;
+}
+
+img{
+    object-fit: contain;
+    height: 1em;
+    align-self: center;
+    justify-self: flex-end;
+    margin: 0;
 }
 
 p{
-    text-align: center;
-    color: var(--dark-text)
+    color: var(--dark-text);
+    align-self: center;
+    margin: 0;
 }

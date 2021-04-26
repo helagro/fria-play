@@ -1,5 +1,14 @@
 :root{
-  --main-bright: #44d96a;
+  --main-bright: #6BC96E;
   --dark-text: #404040;
   --darker-field: #FAFAFA;
+}
+
+@font-face {
+  font-family: main;
+  src: url(./Roboto-Light.ttf);
+}
+
+* {
+  font-family: main;
 }

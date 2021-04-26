@@ -4,22 +4,23 @@ import ExpandableMobileAppBar from "../components/ExpandableMobileAppBar";
 import RoundedTextAndImageButton from "../components/RoundedTextAndImageButton";
 import SongInfo from "../components/SongInfo";
 import SongList from "../components/SongList"
+import logo23 from "../components/img/logo23.svg"
+import shuffle from "../components/img/shuffle.svg"
+import style from "./style/Playlist.module.css"
+import backArrow from "../components/img/ic-arrows-left.svg"
+import moreIcon from "../components/img/ic-actions-more-2.svg"
 
 //Functional Component 
 
-const playlistPlayButtonGroupStyle = {
-  display:"grid",
-  gridTemplateColumns:"auto auto"
-}
 
 const PlayList = () => {
   return (
     <div>
-      <ExpandableMobileAppBar/>
-      <h2>Top 4</h2>
-      <div class="playlistPlayButtonGroup" style={playlistPlayButtonGroupStyle}>
-        <RoundedTextAndImageButton title="PLAY"/>
-        <RoundedTextAndImageButton title="SHUFFLE"/>
+      <ExpandableMobileAppBar iconOne={backArrow} iconTwo={moreIcon}/>
+      <h1>Top 4</h1>
+      <div className={style.container}>
+        <RoundedTextAndImageButton title="PLAY" image={logo23}/>
+        <RoundedTextAndImageButton title="SHUFFLE" image={shuffle}/>
       </div>
       <SongList/>
     </div>

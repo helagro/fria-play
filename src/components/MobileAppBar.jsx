@@ -1,16 +1,13 @@
 import React, { FunctionComponent } from 'react';
 import styles from "./style/MobileAppBar.module.css"
-import backArrow from "./img/ic-arrows-left.svg"
 import menu from "./img/ic-actions-menu.svg"
 
-function MobileAppBar(){
+function MobileAppBar(props){
     return (
         <div className={styles.appBarBar}>
-            <img src={backArrow} className={styles.appBarIcon}/>
-            <h2>
-                This is an app bar 
-            </h2>
-            <img src={menu} className={styles.appBarIcon}/>
+            <img src={props.iconOne} className={styles.iconOne}/>
+            <div></div>
+            <img src={props.iconTwo} className={styles.iconTwo}/>
         </div>
     )
 }

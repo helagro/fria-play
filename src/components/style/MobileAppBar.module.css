@@ -1,16 +1,20 @@
 :root{
-	--app-bar-height: 3em;
+	--app-bar-height: 4em;
 } 
 
 .appBarBar {
 	background-color: var(--main-bright); 
 	display: grid;
-	grid-template-columns: var(--app-bar-height) auto var(--app-bar-height);
+	grid-template-columns: 4em auto 4em;
     height: var(--app-bar-height);
     width: 100%;
 } 
-.appBarIcon {
-	color: white;
-    height: var(--app-bar-height);
-	width: var(--app-bar-height);
+img {
+    height: 2em;
+	width: 2em;
+	margin: 1em 1em
+}
+.iconTwo {
+	height: 1.6em;
+	width: 1.6em;
 }

@@ -1,0 +1,13 @@
+
+h1{
+   font-size: 2.25em; 
+   color: var(--dark-text);
+   text-align: center;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 1em;
+    margin: 1.45em;
+}

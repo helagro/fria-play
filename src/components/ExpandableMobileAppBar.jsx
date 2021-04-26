@@ -5,11 +5,11 @@ import PlaylistCover from './PlaylistCover';
 import survival from "./img/survival.jpg";
 
 
-function ExpandableMobileAppBar(){
+function ExpandableMobileAppBar(props){
     let songImages = [survival, survival, survival, survival]
     return (
         <div className={style.expandableMobileAppBar}>
-            <MobileAppBar/>
+            <MobileAppBar iconOne={props.iconOne} iconTwo={props.iconTwo}/>
             <div className={style.expandingArea}>
                 <PlaylistCover images={songImages}/>
             </div>
