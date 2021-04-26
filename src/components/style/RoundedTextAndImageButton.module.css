@@ -9,7 +9,7 @@
     column-gap: 0.4em;
 }
 
-img{
+.roundedButton img{
     object-fit: contain;
     height: 1em;
     align-self: center;
@@ -17,7 +17,7 @@ img{
     margin: 0;
 }
 
-p{
+.roundedButton p{
     color: var(--dark-text);
     align-self: center;
     margin: 0;

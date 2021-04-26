@@ -2,23 +2,18 @@
 
 .container {
     display: grid;
-    grid-template-columns: 5em 3fr;
+    grid-template-columns: 3.2em 3fr;
     grid-template-rows: 1fr 1fr;
-    height: 5em;
-    column-gap: 0.4em;
+    height: 3.2em;
+    column-gap: 0.8em;
 }
 
 .photo{
-    background-color: green;
     grid-row: 1 / span 2;
 }
 
 
 .textContainer{
-    background-color: yellow;
-    border-color: teal;
-    border-style: dotted;
-    border-width: 2px;
     display: flex;
 }
 
@@ -29,6 +24,8 @@
 .title {
     align-self: flex-end;
     position: relative;
+    color: var(--normal-text);
+    font-size: 1.3em;
 }
 
 .info{
@@ -36,4 +33,7 @@
     text-transform: uppercase;
     grid-column: 2;
     grid-row: 2;
+    color: var(--bright-text);
+    font-size: 1em;
+    padding-left: 0.2em;
 }

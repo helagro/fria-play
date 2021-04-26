@@ -18,7 +18,7 @@ const PlayList = () => {
     <div>
       <ExpandableMobileAppBar iconOne={backArrow} iconTwo={moreIcon}/>
       <h1>Top 4</h1>
-      <div className={style.container}>
+      <div className={style.btnContainer}>
         <RoundedTextAndImageButton title="PLAY" image={logo23}/>
         <RoundedTextAndImageButton title="SHUFFLE" image={shuffle}/>
       </div>
