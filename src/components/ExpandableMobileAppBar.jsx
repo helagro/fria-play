@@ -9,6 +9,7 @@ const playlistCoverSideDefault = 176
 function ExpandableMobileAppBar(props){
     const songImages = [survival, survival, survival, survival]
     const [playlistCoverSide, setplaylistCoverSide] = useState(playlistCoverSideDefault)
+    const showShadow = playlistCoverSide !== playlistCoverSideDefault && playlistCoverSide !== 0
 
     useEffect(() => {
         const onScroll = e => {
@@ -22,7 +23,7 @@ function ExpandableMobileAppBar(props){
 
     return (
         <div className={style.expandableMobileAppBar}>
-            <MobileAppBar iconOne={props.iconOne} iconTwo={props.iconTwo}/>
+            <MobileAppBar iconOne={props.iconOne} iconTwo={props.iconTwo} style={{"bow-shadow":"3 3 5 1"}}/>
             <div className={style.expandingArea}>
                 <PlaylistCover images={songImages} style={{"height":`${playlistCoverSide}px`, "width":`${playlistCoverSide}px`}}/>
             </div>
