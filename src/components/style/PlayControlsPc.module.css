@@ -1,0 +1,9 @@
+.container{
+    height: 4em;
+    background-color: var(--darker-field);
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: grid;
+    grid-template-columns: min-content min-content min-content;
+}

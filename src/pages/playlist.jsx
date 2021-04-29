@@ -13,6 +13,7 @@ import MyNavBar from "../components/MyNavBar"
 import MyNavBarPc from "../components/MyNavBarPc"
 import SongGrid from "../components/SongGrid"
 import Helpers from "../Helpers"
+import PlayControlsPc from "../components/PlayControlsPc"
 import { useState, useEffect } from 'react';
 
 function useWindowDimensions() {
@@ -66,7 +67,7 @@ function computerView(){
   return (
     <div>
       <MyNavBarPc/>
-      <SongGrid/>
+      <PlayControlsPc/>
     </div>
   );
 }
