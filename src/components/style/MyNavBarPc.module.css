@@ -1,0 +1,32 @@
+.container{
+    display: grid;
+    grid-auto-columns: auto;
+    grid-template-rows: auto;
+    grid-auto-flow: column;
+    width: min-content;
+    background-color: var(--darker-field);
+    border-bottom-left-radius: 3em;
+    border-bottom-right-radius: 3em;
+    margin: auto;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    justify-content: center; 
+    padding: 0 1.6em;
+}
+
+.menuItem{
+    display: grid;
+    grid-template-columns: min-content min-content;
+    column-gap: 0.7em;
+    margin: 0 1.3em;
+}
+
+.menuItem img{
+    margin: auto;
+}
+
+.menuItem p{
+    margin-top: 1.2em;
+}

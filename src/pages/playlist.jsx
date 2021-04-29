@@ -10,11 +10,44 @@ import style from "./style/Playlist.module.css"
 import backArrow from "../components/img/ic-arrows-left.svg"
 import moreIcon from "../components/img/ic-actions-more-2.svg"
 import MyNavBar from "../components/MyNavBar"
+import MyNavBarPc from "../components/MyNavBarPc"
+import SongGrid from "../components/SongGrid"
+import Helpers from "../Helpers"
+import { useState, useEffect } from 'react';
 
-//Functional Component 
-
+function useWindowDimensions() {
+    const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+  
+    useEffect(() => {
+      function handleResize() {
+        setWindowDimensions(getWindowDimensions());
+      }
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
+  
+    return windowDimensions;
+}
+function getWindowDimensions() {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+        width,
+        height
+    };
+}
 
 const PlayList = () => {
+  const { height, width } = useWindowDimensions();
+
+  if(width < 1000){
+    return MobileView()
+  } else{
+    return computerView()
+  }
+};
+
+function MobileView(){
   return (
     <div>
       <ExpandableMobileAppBar iconOne={backArrow} iconTwo={moreIcon}/>
@@ -27,6 +60,15 @@ const PlayList = () => {
       <MyNavBar/>
     </div>
   );
-};
+}
+
+function computerView(){
+  return (
+    <div>
+      <MyNavBarPc/>
+      <SongGrid/>
+    </div>
+  );
+}
 
 export default PlayList;
