@@ -1,20 +1,22 @@
 .container{
     display:grid;
-    grid-template-columns: 1fr 1.3fr 1fr;
-    height: min-content;
-    height: 100%;
-    width: 100px;
-    column-gap: 2em;
+    grid-template-columns: 1fr 2fr 1fr;
+    height: 50%;
+    width: 130px;
+}
+
+.btnContainer{
+    overflow: hidden;
+    display: flex;
 }
 
 .container img{
-    height: 50%;
-    object-fit: contain;
+    height: 90%;
+    object-fit: scale-down;
+    align-self: center;
 }
 
-.prevSong{
-    rotate: 180deg;
-}
 .playBtn{
-    transform: translateX(-23%);
+    height: 100% !important;
+    transform: translateX(-11%);
 }

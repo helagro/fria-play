@@ -6,4 +6,19 @@
     bottom: 0;
     display: grid;
     grid-template-columns: min-content min-content min-content;
+    justify-content: space-around;
+    align-content: center;
+}
+
+.advancedControls{
+    height: 100%;
+    width: 300px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+}
+
+.advancedControls img{
+    height: 40px;
+    width: 40px;
 }
