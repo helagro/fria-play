@@ -1,6 +1,6 @@
 /*index.jsx*/
 import React from "react";
-import MobileAppBar from "../components/MobileAppBar"
+import MobileAppBar from "./MobileAppBar"
 //Functional Component 
 const player = () => {
   return (
