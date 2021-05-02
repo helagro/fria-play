@@ -10,6 +10,7 @@
 }
 
 .mainContent{
+    margin-top: var(--my-nav-bar-pc-height);
     display: grid;
     grid-template-columns: 1fr 3fr;
     align-self: stretch;

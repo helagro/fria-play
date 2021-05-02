@@ -7,7 +7,7 @@ import PlayControlsPc from "../components/PlayControlsPc"
 function PlayListComputerView() {
     return (
         <div className={style.container}>
-            <MyNavBarPc/>
+            <MyNavBarPc fullWidth={true}/>
             <div className={style.mainContent}>
                 <div className={style.infoPart}>
                     <h1>info</h1>
