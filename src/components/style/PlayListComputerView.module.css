@@ -1,17 +1,19 @@
 .container{
     display: grid;
-    grid-template-rows: min-content 1fr min-content;
+    grid-template-rows: 1fr min-content;
     height: 100vh;
     width: 100vw;
+    align-content: stretch;
     align-items: stretch;
     overflow: hidden;
+    grid-template-columns: 100%;
 }
 
 .mainContent{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    height: 100%;
-    width: 100%;
+    align-self: stretch;
+    background-color: red;
 }
 
 .infoPart{
