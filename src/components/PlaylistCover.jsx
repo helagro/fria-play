@@ -5,7 +5,7 @@ import style from "./style/PlaylistCover.module.css"
 function PlaylistCover(props){
     const images = props.images
     return (
-        <div className={style.container} style={props.style}>
+        <div className={[style.container, props.className].join(" ")} style={props.style}>
             <CoverPhoto image={images[0]}/>
             <CoverPhoto image={images[1]}/>
             <CoverPhoto image={images[2]}/>

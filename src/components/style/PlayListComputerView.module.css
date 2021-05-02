@@ -1,22 +1,63 @@
 .container{
-    display: grid;
-    grid-template-rows: 1fr min-content;
     height: 100vh;
-    width: 100vw;
-    align-content: stretch;
-    align-items: stretch;
-    overflow: hidden;
-    grid-template-columns: 100%;
+    display: grid;
+    grid-template-rows: 1fr auto;
 }
 
 .mainContent{
     margin-top: var(--my-nav-bar-pc-height);
     display: grid;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 2fr 5fr;
     align-self: stretch;
-    background-color: red;
+    background-color: white;
+    height: 100%;
 }
 
 .infoPart{
     background-color: var(--darker-field);
+    padding-left: 5%;
+}
+
+.playlistCover{
+    margin-top: 5%;
+    height: 31.5em;
+    width: 31.5em;
+}
+
+.playlistInfo{
+    display: grid;
+    grid-template-columns: 1fr 2em;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto auto;
+    text-align: center;
+    width: max-content;
+    height: max-content;
+    margin: 2em auto;
+}
+
+.playlistTitle{
+    font-size: 3em;
+    color: var(--dark-text);
+    margin: 0.1em;
+}
+
+.theCreatorsName{
+    font-size: 1.8em;
+    margin: 0.05em;
+    color: var(--bright-text)
+}
+
+.songsLength{
+    margin: 0.7em;
+    font-size: 1.66em;
+}
+
+.more{
+    grid-row: 1;
+    grid-column: 2;
+    align-self: center;
+    object-fit: cover;
+    height: 70%;
+    width: 80%;
+    margin-left: 1em;
 }
