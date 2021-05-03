@@ -37,20 +37,20 @@
 }
 
 .playlistTitle{
-    font-size: 240%;
+    font-size: min(2vw, 2.6em);
     color: var(--dark-text);
     margin: 0.1em;
 }
 
 .theCreatorsName{
-    font-size: 1.8em;
+    font-size: min(1.6vw, 1.7em);
     margin: 0.05em;
     color: var(--bright-text)
 }
 
 .songsLength{
     margin: 0.7em;
-    font-size: 1.66em;
+    font-size: min(1.5vw, 1.6em);
 }
 
 .more{
