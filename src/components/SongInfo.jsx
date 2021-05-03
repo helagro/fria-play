@@ -6,7 +6,7 @@ import moreIcon from "./img/ic-actions-more-2-dark.svg"
 
 function SongInfo(props){
     return (
-        <div className={style.container}>
+        <div className={[style.container, props.className].join(" ")}>
             <CoverPhoto image={props.image} className={style.photo}/>
             <div className={style.songText}>
                 <div className={style.textContainer}>
