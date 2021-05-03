@@ -1,9 +1,13 @@
 :root{
-  --main-bright: #6BC96E;
   --dark-text: #404040;
   --normal-text: #484848;
   --bright-text: #7C7C7C;
+
+  --main-bright: #6BC96E;
   --darker-field: #FAFAFA;
+  --dark-field: #e2e2e2;
+
+  --dark-component: #818181;
 
   --app-bar-height: 3em;
 }

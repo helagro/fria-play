@@ -10,7 +10,6 @@
     grid-template-columns: 2fr 5fr;
     align-self: stretch;
     background-color: white;
-    height: 100%;
 }
 
 .infoPart{
@@ -20,8 +19,10 @@
 
 .playlistCover{
     margin-top: 5%;
-    height: 31.5em;
-    width: 31.5em;
+    height: 19vw;
+    width: 19vw;
+    max-width: 25em;
+    max-height: 25em;
 }
 
 .playlistInfo{
@@ -36,7 +37,7 @@
 }
 
 .playlistTitle{
-    font-size: 3em;
+    font-size: 240%;
     color: var(--dark-text);
     margin: 0.1em;
 }
@@ -60,4 +61,14 @@
     height: 70%;
     width: 80%;
     margin-left: 1em;
+}
+
+.songsPart{
+    width: 100%;
+    display: flex;
+}
+
+.songList{
+    align-self: flex-end;
+    width: 100%;
 }

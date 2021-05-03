@@ -7,6 +7,7 @@ import CoverPhoto from './CoverPhoto'
 import PlaylistCover from './PlaylistCover'
 import LegendImage from "./img/legend-theScore.jpg"
 import MoreIcon from "./img/ic-actions-more-2-dark.svg"
+import SongList from "./SongList"
 
 function PlayListComputerView() {
     return (
@@ -23,7 +24,7 @@ function PlayListComputerView() {
                     </div>
                 </div>
                 <div className={style.songsPart}>
-                    <h1>songs</h1>
+                    <SongList className={style.songList}/>
                 </div>
             </div>
             <PlayControlsPc/>

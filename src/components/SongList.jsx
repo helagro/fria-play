@@ -4,9 +4,9 @@ import SongInfo from "./SongInfo"
 import style from "./style/SongList.module.css"
 
 
-function SongList() {
+function SongList(props) {
     return (
-        <div className={style.container}>
+        <div className={[style.container, props.className].join(" ")} style={props.style}>
             <SongInfo image={Survival} title="Survival" artist="eminem"/>
             <SongInfo image={Survival}/>
         </div>

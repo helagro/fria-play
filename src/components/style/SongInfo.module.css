@@ -2,16 +2,14 @@
 
 .container {
     display: grid;
-    grid-template-columns: 3.2em 3fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 3.2em 3fr 3.2em;
     height: 3.2em;
     column-gap: 0.8em;
 }
 
 .photo{
-    grid-row: 1 / span 2;
+    
 }
-
 
 .textContainer{
     display: flex;
@@ -36,4 +34,24 @@
     color: var(--bright-text);
     font-size: 1em;
     padding-left: 0.2em;
+}
+
+.more{
+    height: 50%;
+    justify-self: center;
+    align-self: center;
+    display: none;
+}
+
+@media screen and (min-width: 35em) {
+    .more{
+        display: initial;
+    }   
+}
+
+@media screen and (min-width: 88em) {
+    .container{
+        padding-bottom: 0.5em;
+        border-bottom: 0.01em var(--dark-field) solid;
+    }   
 }
