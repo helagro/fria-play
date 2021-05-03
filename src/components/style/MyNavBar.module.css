@@ -1,3 +1,7 @@
+:root{
+    --app-bar-height: 3em;
+}
+
 .containersContainer{
     width: 100%;
     background-color: var(--darker-field);

@@ -10,7 +10,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import Player from "./components/Player"
+import Player from "./components/PlayerMobile"
 import Playlist from "./components/Playlist"
 
 class App extends Component {

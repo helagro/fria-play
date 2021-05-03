@@ -4,9 +4,9 @@ import playBtnIcon from "./img/logo23.svg"
 import nextSongIcon from "./img/next-song.svg"
 import prevSongIcon from "./img/prev-song.svg"
 
-function PlayAndSwitchSong() {
+function PlayAndSwitchSong(props) {
     return (
-        <div className={style.container}>
+        <div className={[style.container, props.className].join(" ")} style={props.style}>
             <div className={style.btnContainer}><img src={prevSongIcon} alt="Prev song" className={style.prevSong}/></div>
             <div className={style.btnContainer}><img src={playBtnIcon} alt="Play button" className={style.playBtn}/></div>
             <div className={style.btnContainer}><img src={nextSongIcon} alt="Next song" className={style.nextSong}/></div>

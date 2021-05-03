@@ -4,7 +4,7 @@ import CoverPhoto from "./CoverPhoto"
 
 function SongInfoLarge(props) {
     return (
-        <div className={style.container}>
+        <div className={[style.container, props.className].join(" ")} style={props.style}>
             <CoverPhoto image={props.image} className={style.photo}/>
                 <p className={style.title}>{props.title}</p>   
                 <p className={style.info}>{props.artist}</p>
