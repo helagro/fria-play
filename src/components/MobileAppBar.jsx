@@ -1,23 +1,32 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useState} from 'react';
 import styles from "./style/MobileAppBar.module.css"
 import menu from "./img/ic-actions-menu.svg"
+import googleDrive from "../logic/googleDriveApi"
+
+
+
+
 
 function MobileAppBar(props){
+    const [displayDropdown, setDisplayDropdown] = useState(false)
+
+    function toggleDropdown(){
+        setDisplayDropdown(!displayDropdown)
+    }
+
     return (
         <div className={styles.appBarBar} style={props.style}>
 
             <img src={props.iconOne} className={styles.iconOne}/>
             <div></div>
-            <label for="optionAlternatives">
-                <img src={props.iconTwo} className={styles.iconTwo}/>
-            </label>
-            <select name="optionAlternatives">
-                <option value="Login">
-                    Login
-                </option>
-            </select>
+            <img src={props.iconTwo} className={styles.iconTwo} onClick={toggleDropdown}/>
+            <ul className={styles.dropDown} style={{"display": displayDropdown ? "block" : "none"}}>
+                <button onClick={handleAuthClick}>Login</button>
+            </ul>
         </div>
     )
 }
+
+
 
 export default MobileAppBar

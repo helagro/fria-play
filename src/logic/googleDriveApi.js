@@ -4,9 +4,6 @@ let BLOCK_GOOGLE_DRIVE = false
 var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
 var SCOPES = 'https://www.googleapis.com/auth/drive';
 
-var authorizeButton = document.getElementById('authorize_button');
-var signoutButton = document.getElementById('signout_button');
-
 
 function handleClientLoad() {
     if(BLOCK_GOOGLE_DRIVE)
@@ -25,7 +22,6 @@ function initClient() {
 
         // Handle the initial sign-in state.
         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        authorizeButton.onclick = handleAuthClick;
         signoutButton.onclick = handleSignoutClick;
     }, function(error) {
         console.log(JSON.stringify(error, null, 2));
@@ -33,12 +29,8 @@ function initClient() {
 }
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
-        authorizeButton.style.display = 'none';
-        signoutButton.style.display = 'block';
         fillWithDriveJson()
     } else {
-        authorizeButton.style.display = 'block';
-        signoutButton.style.display = 'none';
     }
 }
 

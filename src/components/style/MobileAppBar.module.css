@@ -18,3 +18,9 @@
 	height: 1.6em !important;
 	width: 1.6em !important;
 }
+
+.dropDown{
+	position: fixed;
+	right: 0;
+	top: var(--app-bar-height);
+}
