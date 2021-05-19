@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useState} from 'react';
 import styles from "./style/MobileAppBar.module.css"
 import menu from "./img/ic-actions-menu.svg"
-import googleDrive from "../logic/googleDriveApi"
-
-
+import googleDrive, {getDriveInstance} from "../logic/googleDriveApi"
 
 
 
@@ -21,7 +19,7 @@ function MobileAppBar(props){
             <div></div>
             <img src={props.iconTwo} className={styles.iconTwo} onClick={toggleDropdown}/>
             <ul className={styles.dropDown} style={{"display": displayDropdown ? "block" : "none"}}>
-                <button onClick={handleAuthClick}>Login</button>
+                <button onClick={getDriveInstance().handleAuthClick}>Login</button>
             </ul>
         </div>
     )
