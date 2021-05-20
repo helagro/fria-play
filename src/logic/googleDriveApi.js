@@ -30,10 +30,10 @@ export class GoogleDriveHandler{
             scope: SCOPES
         }).then(function () {
             // Listen for sign-in state changes.
-            gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
+            gapi.auth2.getAuthInstance().isSignedIn.listen(getDriveInstance().updateSigninStatus);
 
             // Handle the initial sign-in state.
-            this.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            getDriveInstance().updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         }, function(error) {
             console.log(JSON.stringify(error, null, 2));
         });
