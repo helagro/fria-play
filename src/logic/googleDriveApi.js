@@ -1,6 +1,10 @@
-var driveInstance = GoogleDriveHandler()
+import { gapi } from 'gapi-script';
+
+var driveInstance
 
 export function getDriveInstance(){
+    if(driveInstance == null) driveInstance=GoogleDriveHandler()
+
     return driveInstance
 }
 
@@ -27,11 +31,10 @@ export class GoogleDriveHandler{
             scope: this.SCOPES
         }).then(function () {
             // Listen for sign-in state changes.
-            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSigninStatus);
 
             // Handle the initial sign-in state.
-            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-            signoutButton.onclick = handleSignoutClick;
+            this.updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
         }, function(error) {
             console.log(JSON.stringify(error, null, 2));
         });
