@@ -2,16 +2,19 @@ import { gapi } from 'gapi-script';
 
 var driveInstance
 
-export function getDriveInstance(){
-    if(driveInstance == null) driveInstance=new GoogleDriveHandler()
+export function getDriveInstance(listener){
+    if(driveInstance == null) driveInstance=new GoogleDriveHandler(listener)
 
     return driveInstance
 }
 
 export class GoogleDriveHandler{
-    constructor(){
+    constructor(listener){
+        this.listener = listener
         this.loadClient()
     }
+
+    listener
 
     //ANCHOR loading
     loadClient() {
@@ -41,6 +44,12 @@ export class GoogleDriveHandler{
 
     
     updateSigninStatus(isSignedIn) {
+        if(isSignedIn){
+            this.listener("signed_in")
+        } else{
+            this.listener("signed_out")
+        }
+
     }
     handleAuthClick(event) {
         gapi.auth2.getAuthInstance().signIn();

@@ -7,10 +7,22 @@ import googleDrive, {getDriveInstance} from "../logic/googleDriveApi"
 
 function MobileAppBar(props){
     const [displayDropdown, setDisplayDropdown] = useState(false)
-
     function toggleDropdown(){
         setDisplayDropdown(!displayDropdown)
     }
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    console.log("a week ago" + isLoggedIn)
+
+    function driveListener(msg){
+        console.log("drive "+msg)
+
+        switch(msg){
+            case "signed_in": setIsLoggedIn(true); console.log("signed in");
+        }
+    }
+    const driveInstance = getDriveInstance(driveListener)
+
 
     return (
         <div className={styles.appBarBar} style={props.style}>
@@ -19,7 +31,7 @@ function MobileAppBar(props){
             <div></div>
             <img src={props.iconTwo} className={styles.iconTwo} onClick={toggleDropdown}/>
             <ul className={styles.dropDown} style={{"display": displayDropdown ? "block" : "none"}}>
-                <button onClick={getDriveInstance().handleAuthClick}>Login</button>
+                <button onClick={driveInstance.handleAuthClick}>{isLoggedIn ? "Log out" : "Log in"}</button>
             </ul>
         </div>
     )
