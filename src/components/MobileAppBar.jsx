@@ -4,7 +4,6 @@ import menu from "./img/ic-actions-menu.svg"
 import googleDrive, {getDriveInstance} from "../logic/googleDriveApi"
 
 
-
 function MobileAppBar(props){
     const [displayDropdown, setDisplayDropdown] = useState(false)
     function toggleDropdown(){
@@ -20,9 +19,7 @@ function MobileAppBar(props){
         switch(msg){
             case "signed_out":
             case "signed_in": 
-                console.log("driveListener, loggedIn:" + !isLoggedIn)
-                //setIsLoggedIn(!isLoggedIn)
-                console.log(this.lol)
+                
                 break
         }
     }
@@ -36,7 +33,7 @@ function MobileAppBar(props){
             <div></div>
             <img src={props.iconTwo} className={styles.iconTwo} onClick={toggleDropdown}/>
             <ul className={styles.dropDown} style={{"display": displayDropdown ? "block" : "none"}}>
-                <button onClick={()=>{driveInstance.changeLoginStatus(!isLoggedIn);setIsLoggedIn(!isLoggedIn)}}>{isLoggedIn ? "Log out" : "Log in"}</button>
+                <button onClick={()=>{driveInstance.changeLoginStatus(true);setIsLoggedIn(!isLoggedIn)}}>{isLoggedIn ? "Log out" : "Log in"}</button>
             </ul>
         </div>
     )
