@@ -14,6 +14,7 @@ export class GoogleDriveHandler{
         this.loadClient()
     }
 
+    lol="fea"
     listener
 
     //ANCHOR loading
@@ -45,19 +46,20 @@ export class GoogleDriveHandler{
     
     updateSigninStatus(isSignedIn) {
         if(isSignedIn){
-            this.listener("signed_in")
+            driveInstance.listener("signed_in")
         } else{
-            this.listener("signed_out")
+            driveInstance.listener("signed_out")
         }
 
     }
-    handleAuthClick(event) {
-        gapi.auth2.getAuthInstance().signIn();
+    changeLoginStatus(login){
+        console.log("changeLoginStatus, login: " + login)
+        if (login){
+            gapi.auth2.getAuthInstance().signIn();
+        } else {
+            gapi.auth2.getAuthInstance().signOut();
+        }
     }
-    handleSignoutClick(event) {
-        gapi.auth2.getAuthInstance().signOut();
-    }
-
 
     getFilename(){
         const queryString = window.location.search;

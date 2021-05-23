@@ -12,13 +12,18 @@ function MobileAppBar(props){
     }
 
     const [isLoggedIn, setIsLoggedIn] = useState(false)
-    console.log("a week ago" + isLoggedIn)
+    console.log("loaded, logged in:" + isLoggedIn)
 
     function driveListener(msg){
-        console.log("drive "+msg)
+        console.log("drive listener "+msg)
 
         switch(msg){
-            case "signed_in": setIsLoggedIn(true); console.log("signed in");
+            case "signed_out":
+            case "signed_in": 
+                console.log("driveListener, loggedIn:" + !isLoggedIn)
+                //setIsLoggedIn(!isLoggedIn)
+                console.log(this.lol)
+                break
         }
     }
     const driveInstance = getDriveInstance(driveListener)
@@ -31,7 +36,7 @@ function MobileAppBar(props){
             <div></div>
             <img src={props.iconTwo} className={styles.iconTwo} onClick={toggleDropdown}/>
             <ul className={styles.dropDown} style={{"display": displayDropdown ? "block" : "none"}}>
-                <button onClick={driveInstance.handleAuthClick}>{isLoggedIn ? "Log out" : "Log in"}</button>
+                <button onClick={()=>{driveInstance.changeLoginStatus(!isLoggedIn);setIsLoggedIn(!isLoggedIn)}}>{isLoggedIn ? "Log out" : "Log in"}</button>
             </ul>
         </div>
     )
