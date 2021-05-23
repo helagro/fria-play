@@ -2,26 +2,26 @@ import { gapi } from 'gapi-script';
 
 var driveInstance
 
-export function getDriveInstance(listener){
-    if(driveInstance == null) driveInstance=new GoogleDriveHandler(listener)
+export function getDriveInstance(listener, componentCtx){
+    if(driveInstance == null) driveInstance=new GoogleDriveHandler(listener, componentCtx)
 
     return driveInstance
 }
 
 export class GoogleDriveHandler{
-    constructor(listener){
+    constructor(listener, componentCtx){
         this.listener = listener
-        this.loadClient()
+        this.loadClient(componentCtx)
     }
 
     lol="fea"
     listener
 
     //ANCHOR loading
-    loadClient() {
-        gapi.load('client:auth2', this.initClient);
+    loadClient(componentCtx) {
+        gapi.load('client:auth2', ()=>this.initClient(componentCtx));
     }
-    initClient() {
+    initClient(componentCtx) {
         const CLIENT_ID = '590519824924-eikjcarl4oun621q3c156krsofr62gbo.apps.googleusercontent.com';
         const API_KEY = 'AIzaSyDtRE4dP3eitBDkT4S3RkO5Pp_ZA8CHFuo';
         const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
@@ -33,20 +33,22 @@ export class GoogleDriveHandler{
             discoveryDocs: DISCOVERY_DOCS,
             scope: SCOPES
         }).then(function () {
-            driveInstance.changeLoginStatus(false)
+            driveInstance.changeLoginStatus(false, componentCtx)
         }, function(error) {
             console.log(JSON.stringify(error, null, 2));
         });
     }
 
 
-    changeLoginStatus(shouldChange){
+    changeLoginStatus(shouldChange, componentCtx){
+        if(!gapi.auth2) return 
+
         let isLoggedIn = gapi.auth2.getAuthInstance().isSignedIn.get()
 
-        function updateSigninStatus(isSignedIn) {driveInstance.listener(isSignedIn ? "signed_in" : "signed_out")}
+        function updateSigninStatus(isSignedIn) {console.log("signedinListen: " + componentCtx);driveInstance.listener(isSignedIn ? "signed_in" : "signed_out", componentCtx)}
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
-        if (!shouldChange) return
+        if (!shouldChange) return updateSigninStatus(isLoggedIn)
 
         if (isLoggedIn){
             gapi.auth2.getAuthInstance().signOut()
