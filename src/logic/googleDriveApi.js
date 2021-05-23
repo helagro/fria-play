@@ -33,31 +33,25 @@ export class GoogleDriveHandler{
             discoveryDocs: DISCOVERY_DOCS,
             scope: SCOPES
         }).then(function () {
-            // Listen for sign-in state changes.
-            gapi.auth2.getAuthInstance().isSignedIn.listen(getDriveInstance().updateSigninStatus);
-
-            // Handle the initial sign-in state.
-            getDriveInstance().updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            driveInstance.changeLoginStatus(false)
         }, function(error) {
             console.log(JSON.stringify(error, null, 2));
         });
     }
 
-    
-    updateSigninStatus(isSignedIn) {
-        if(isSignedIn){
-            driveInstance.listener("signed_in")
-        } else{
-            driveInstance.listener("signed_out")
-        }
 
-    }
-    changeLoginStatus(login){
-        console.log("changeLoginStatus, login: " + login)
-        if (login){
-            gapi.auth2.getAuthInstance().signIn();
+    changeLoginStatus(shouldChange){
+        let isLoggedIn = gapi.auth2.getAuthInstance().isSignedIn.get()
+
+        function updateSigninStatus(isSignedIn) {driveInstance.listener(isSignedIn ? "signed_in" : "signed_out")}
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+        if (!shouldChange) return
+
+        if (isLoggedIn){
+            gapi.auth2.getAuthInstance().signOut()
         } else {
-            gapi.auth2.getAuthInstance().signOut();
+            gapi.auth2.getAuthInstance().signIn();
         }
     }
 
