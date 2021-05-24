@@ -8,14 +8,8 @@ class SongList extends React.Component{
     constructor(){
         super()
 
-        this.driveInstance = getDriveInstance(this.drivInitListener, this) 
-
         this.state = {
-            songs: [{
-                image: Survival,
-                title: "testtes",
-                artist: "init"
-            }]
+            songs: []
         }
     }
 
@@ -26,43 +20,48 @@ class SongList extends React.Component{
 
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
-                {this.state.songs.map(({image, title, artist}) => 
-                    (<SongInfo image={image} title={title} artist={artist}/>)
+                {this.state.songs.map(({image, title, artist, key}) => 
+                    (<SongInfo image={image} title={title} artist={artist} key={key}/>)
                 )}
             </div>
         )
     }
 
     componentDidMount(){
-
         console.log("lamo");
+        this.driveInstance = getDriveInstance(this.drivInitListener, this)
     }
 
-    drivInitListener(componentCtx){
-        componentCtx.driveInstance.changeLoginStatus(false, componentCtx, componentCtx.driveLoginListener)
+    drivInitListener(ctx){
+        ctx.driveInstance.changeLoginStatus(false, ctx, ctx.driveLoginListener)
     }
 
-    driveLoginListener(msg, componentCtx){
-        console.log("drive listener", componentCtx, this)
+    driveLoginListener(msg, ctx){
+        console.log("drive listener", ctx, this)
 
-        let driveInstance = componentCtx.driveInstance
+        let driveInstance = ctx.driveInstance
 
-        if(!driveInstance.getIsLogin()) return driveInstance.changeLoginStatus(true, driveInstance, componentCtx.driveLoginListener) 
+        if(!driveInstance.getIsLogin()) return driveInstance.changeLoginStatus(true, driveInstance, ctx.driveLoginListener) 
 
-        driveInstance.listFiles(componentCtx.listFileListener, componentCtx)
+        driveInstance.listMediaFiles(ctx.listFileListener, ctx)
     }
 
-    listFileListener(files, containerCtx){
+    listFileListener(files, ctx){
         console.log("listed:", files)
-        containerCtx.setState({
-            songs: this.filesToSongs(files)
+        ctx.setState({
+            songs: ctx.filesToSongs(files)
         })
     }
 
     filesToSongs(files){
         let songs = []
         for (let file of files){
-            songs.push({name: file.name})
+            songs.push({
+                title: file.name,
+                artist: "Bill Gates",
+                image: Survival,
+                key: file.id
+            })
         }
         return songs
     }

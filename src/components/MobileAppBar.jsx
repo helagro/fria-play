@@ -17,12 +17,12 @@ class MobileAppBar extends React.Component{
         }
     }
 
-    driveListener(msg, componentCtx){
+    driveListener(msg, ctx){
         let isLoggedIn
         if(msg == "signed_out") isLoggedIn=false
         else if (msg == "signed_in") isLoggedIn=true
 
-        if(isLoggedIn !== null) return componentCtx.setState({isLoggedIn: isLoggedIn})
+        if(isLoggedIn !== null) return ctx.setState({isLoggedIn: isLoggedIn})
     }
 
     render() {
