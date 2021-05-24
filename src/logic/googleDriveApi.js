@@ -2,26 +2,26 @@ import { gapi } from 'gapi-script';
 
 var driveInstance
 
-export function getDriveInstance(listener, componentCtx){
-    if(driveInstance == null) driveInstance=new GoogleDriveHandler(listener, componentCtx)
+export function getDriveInstance(initListener, componentCtx){
+    if(driveInstance == null) driveInstance=new GoogleDriveHandler(initListener, componentCtx)
 
     return driveInstance
 }
 
+
+
 export class GoogleDriveHandler{
-    constructor(listener, componentCtx){
-        this.listener = listener
-        this.loadClient(componentCtx)
+    constructor(initListener, componentCtx){
+        this.loadClient(componentCtx, initListener)
     }
 
     lol="fea"
-    listener
 
     //ANCHOR loading
-    loadClient(componentCtx) {
-        gapi.load('client:auth2', ()=>this.initClient(componentCtx));
+    loadClient(componentCtx, initListener) {
+        gapi.load('client:auth2', ()=>this.initClient(componentCtx, initListener));
     }
-    initClient(componentCtx) {
+    initClient(componentCtx, initListener) {
         const CLIENT_ID = '590519824924-eikjcarl4oun621q3c156krsofr62gbo.apps.googleusercontent.com';
         const API_KEY = 'AIzaSyDtRE4dP3eitBDkT4S3RkO5Pp_ZA8CHFuo';
         const DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/drive/v3/rest"];
@@ -33,19 +33,18 @@ export class GoogleDriveHandler{
             discoveryDocs: DISCOVERY_DOCS,
             scope: SCOPES
         }).then(function () {
-            driveInstance.changeLoginStatus(false, componentCtx)
+            //driveInstance.changeLoginStatus(false, componentCtx)
+            initListener(componentCtx)
         }, function(error) {
             console.log(JSON.stringify(error, null, 2));
         });
     }
-
-
-    changeLoginStatus(shouldChange, componentCtx){
+    changeLoginStatus(shouldChange, componentCtx, mlistener){
         if(!gapi.auth2) return 
 
-        let isLoggedIn = gapi.auth2.getAuthInstance().isSignedIn.get()
+        let isLoggedIn = this.getIsLogin()
 
-        function updateSigninStatus(isSignedIn) {console.log("signedinListen: " + componentCtx);driveInstance.listener(isSignedIn ? "signed_in" : "signed_out", componentCtx)}
+        function updateSigninStatus(isSignedIn) {mlistener(isSignedIn ? "signed_in" : "signed_out", componentCtx)}
         gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
 
         if (!shouldChange) return updateSigninStatus(isLoggedIn)
@@ -56,6 +55,27 @@ export class GoogleDriveHandler{
             gapi.auth2.getAuthInstance().signIn();
         }
     }
+
+
+    getIsLogin(){
+        return gapi.auth2.getAuthInstance().isSignedIn.get()
+    }
+
+    
+    listFiles(listener, componentCtx) {
+        var hife = "DWEa"
+        gapi.client.drive.files.list({
+          'pageSize': 10,
+          'fields': "nextPageToken, files(id, name)"
+        }).then(function(response) {
+          var files = response.result.files;
+          if (files && files.length > 0) {
+              console.log(hife, listener);
+            listener(files, componentCtx)
+          }
+        });
+      }
+
 
     getFilename(){
         const queryString = window.location.search;
@@ -76,9 +96,9 @@ export class GoogleDriveHandler{
     async getAppDataFileContent(fileId) {
     const res = await gapi.client.drive.files
         .export({
-        fileId: fileId,
-        mimeType: 'text/plain',
-        alt: 'media'
+            fileId: fileId,
+            mimeType: 'text/plain',
+            alt: 'media'
         })
         
         return res.body

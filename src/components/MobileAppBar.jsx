@@ -9,7 +9,7 @@ class MobileAppBar extends React.Component{
     constructor(props){
         super(props)
 
-        this.driveInstance = getDriveInstance(this.driveListener, this)
+        //this.driveInstance = getDriveInstance(this.driveListener, this)
 
         this.state = {
             displayDropdown: false,
@@ -18,8 +18,6 @@ class MobileAppBar extends React.Component{
     }
 
     driveListener(msg, componentCtx){
-        console.log("drive listener "+msg)
-
         let isLoggedIn
         if(msg == "signed_out") isLoggedIn=false
         else if (msg == "signed_in") isLoggedIn=true
@@ -44,10 +42,7 @@ class MobileAppBar extends React.Component{
     }
 
     componentDidMount(){
-        console.log("mount 1")
-        this.driveInstance.changeLoginStatus(false, this)
-        console.log("mount 2")
-
+        //this.driveInstance.changeLoginStatus(false, this)
     }
 }
 

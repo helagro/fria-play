@@ -8,7 +8,7 @@ class SongList extends React.Component{
     constructor(){
         super()
 
-        this.driveInstance = getDriveInstance(this.driveListener, this)
+        this.driveInstance = getDriveInstance(this.drivInitListener, this) 
 
         this.state = {
             songs: [{
@@ -24,8 +24,6 @@ class SongList extends React.Component{
     render(){
         let props = this.props
 
-        console.log("weird", this.state.songs)
-
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
                 {this.state.songs.map(({image, title, artist}) => 
@@ -35,10 +33,38 @@ class SongList extends React.Component{
         )
     }
 
-    driveListener(containerCtx){
+    componentDidMount(){
+
+        console.log("lamo");
+    }
+
+    drivInitListener(componentCtx){
+        componentCtx.driveInstance.changeLoginStatus(false, componentCtx, componentCtx.driveLoginListener)
+    }
+
+    driveLoginListener(msg, componentCtx){
+        console.log("drive listener", componentCtx, this)
+
+        let driveInstance = componentCtx.driveInstance
+
+        if(!driveInstance.getIsLogin()) return driveInstance.changeLoginStatus(true, driveInstance, componentCtx.driveLoginListener) 
+
+        driveInstance.listFiles(componentCtx.listFileListener, componentCtx)
+    }
+
+    listFileListener(files, containerCtx){
+        console.log("listed:", files)
         containerCtx.setState({
-            
+            songs: this.filesToSongs(files)
         })
+    }
+
+    filesToSongs(files){
+        let songs = []
+        for (let file of files){
+            songs.push({name: file.name})
+        }
+        return songs
     }
 }
 
