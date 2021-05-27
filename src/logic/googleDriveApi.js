@@ -80,7 +80,12 @@ export class GoogleDriveHandler{
           }
         });
     }
-    componentDetatched(){
-
+    componentDetached(ctx){
+        console.log("gifted nike", driveInstance.tiedListenerObjects);
+        driveInstance.removeComponentsListeners(ctx)
+        console.log("eye level", driveInstance.tiedListenerObjects, ctx.constructor.name);
+    }
+    removeComponentsListeners(ctx){
+        driveInstance.tiedListenerObjects = driveInstance.tiedListenerObjects.filter(listenerObj => listenerObj.ctx.constructor.name !== ctx.constructor.name)
     }
 }

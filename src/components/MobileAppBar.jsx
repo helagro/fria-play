@@ -40,10 +40,16 @@ class MobileAppBar extends React.Component{
     driveListener(event){
         console.log("appbar drivelistener", event.event)
         switch(event.event){
-            case "already setup": return
-            case "did init": return
-            case "sign in changed": return event.ctx.setState({isLoggedIn: event.payload.isSignedIn})
+            case "already setup": 
+            case "did init": 
+            case "sign in changed": return event.ctx.signInCouldHaveChanged(event)
         }
+    }
+    signInCouldHaveChanged(event){
+        let ctx = event.ctx
+        let isSignedIn = event.payload ? event.payload.isSignedIn : ctx.driveInstance.getIsLogin()
+
+        ctx.setState({isLoggedIn: isSignedIn})
     }
 }
 

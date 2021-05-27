@@ -31,13 +31,16 @@ class SongList extends React.Component{
         this.driveInstance = getDriveInstance()
         this.driveInstance.addListener(this.driveListener, this)
     }
+    componentWillUnmount(){
+        this.driveInstance.componentDetached(this)
+    }
 
     //ANCHOR other
     driveListener(event){
         console.log("song list drivelistener", event)
         switch(event.event){
-            case "already setup": return event.ctx.signInCouldHaveChanged(event)
-            case "did init": return event.ctx.signInCouldHaveChanged(event)
+            case "already setup": 
+            case "did init": 
             case "sign in changed":return event.ctx.signInCouldHaveChanged(event)
         }
     }
