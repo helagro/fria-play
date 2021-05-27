@@ -8,4 +8,16 @@
     height: 200px;
     width: 100%;
     margin-top: var(--app-bar-height);
+    padding-top: 0.2em
+}
+
+.fakeShadow{
+    background-color: red;
+    height: 0.2em;
+    box-shadow: 0 0.2em 0.1em yellow;
+    width: 20em;
+    margin: -1em auto 0.5em auto;
+    position: fixed;
+    left: 0;
+    right: 0;
 }

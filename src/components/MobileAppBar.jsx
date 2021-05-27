@@ -4,12 +4,8 @@ import menu from "./img/ic-actions-menu.svg"
 import googleDrive, {getDriveInstance} from "../logic/googleDriveApi"
 
 class MobileAppBar extends React.Component{
-    driveInstance
-
     constructor(props){
         super(props)
-
-        //this.driveInstance = getDriveInstance(this.driveListener, this)
 
         this.state = {
             displayDropdown: false,
@@ -17,14 +13,9 @@ class MobileAppBar extends React.Component{
         }
     }
 
-    driveListener(msg, ctx){
-        let isLoggedIn
-        if(msg == "signed_out") isLoggedIn=false
-        else if (msg == "signed_in") isLoggedIn=true
+    driveInstance
 
-        if(isLoggedIn !== null) return ctx.setState({isLoggedIn: isLoggedIn})
-    }
-
+    //ANCHOR lifecycle
     render() {
         let props = this.props
 
@@ -35,14 +26,24 @@ class MobileAppBar extends React.Component{
                 <div></div>
                 <img src={props.iconTwo} className={styles.iconTwo} onClick={()=>{this.setState({displayDropdown: !this.state.displayDropdown})}}/>
                 <ul className={styles.dropDown} style={{"display": this.state.displayDropdown ? "block" : "none"}}>
-                    <button onClick={()=>{this.driveInstance.changeLoginStatus(true, this)}}>{this.state.isLoggedIn ? "Log out" : "Log in"}</button>
+                    <button onClick={()=>{this.driveInstance.changeLoginStatus(true, this, this.driveListener)}}>{this.state.isLoggedIn ? "Log out" : "Log in"}</button>
                 </ul>
             </div>
         )
     }
-
     componentDidMount(){
-        //this.driveInstance.changeLoginStatus(false, this)
+        this.driveInstance = getDriveInstance()
+        this.driveInstance.addListener(this.driveListener, this)
+    }
+
+
+    driveListener(event){
+        console.log("appbar drivelistener", event.event)
+        switch(event.event){
+            case "already setup": return
+            case "did init": return
+            case "sign in changed": return event.ctx.setState({isLoggedIn: event.payload.isSignedIn})
+        }
     }
 }
 

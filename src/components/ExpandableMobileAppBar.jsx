@@ -25,6 +25,7 @@ function ExpandableMobileAppBar(props){
         <div className={style.expandableMobileAppBar}>
             <MobileAppBar iconOne={props.iconOne} iconTwo={props.iconTwo} style={{"boxShadow":"3 3 5 1"}}/>
             <div className={style.expandingArea}>
+                <div className={style.fakeShadow} style={{"width": `${playlistCoverSide}px`}}></div>
                 <PlaylistCover images={songImages} style={{"height":`${playlistCoverSide}px`, "width":`${playlistCoverSide}px`}}/>
             </div>
         </div>

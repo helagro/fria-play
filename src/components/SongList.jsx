@@ -15,6 +15,7 @@ class SongList extends React.Component{
 
     driveInstance
 
+    //ANCHOR lifecycle
     render(){
         let props = this.props
 
@@ -26,33 +27,32 @@ class SongList extends React.Component{
             </div>
         )
     }
-
     componentDidMount(){
-        console.log("lamo");
-        this.driveInstance = getDriveInstance(this.drivInitListener, this)
+        this.driveInstance = getDriveInstance()
+        this.driveInstance.addListener(this.driveListener, this)
     }
 
-    drivInitListener(ctx){
-        ctx.driveInstance.changeLoginStatus(false, ctx, ctx.driveLoginListener)
+    //ANCHOR other
+    driveListener(event){
+        console.log("song list drivelistener", event)
+        switch(event.event){
+            case "already setup": return event.ctx.signInCouldHaveChanged(event)
+            case "did init": return event.ctx.signInCouldHaveChanged(event)
+            case "sign in changed":return event.ctx.signInCouldHaveChanged(event)
+        }
     }
+    signInCouldHaveChanged(event){
+        let ctx = event.ctx
+        let isSignedIn = event.payload ? event.payload.isSignedIn : ctx.driveInstance.getIsLogin()
 
-    driveLoginListener(msg, ctx){
-        console.log("drive listener", ctx, this)
-
-        let driveInstance = ctx.driveInstance
-
-        if(!driveInstance.getIsLogin()) return driveInstance.changeLoginStatus(true, driveInstance, ctx.driveLoginListener) 
-
-        driveInstance.listMediaFiles(ctx.listFileListener, ctx)
+        if(isSignedIn) ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
     }
-
     listFileListener(files, ctx){
         console.log("listed:", files)
         ctx.setState({
             songs: ctx.filesToSongs(files)
         })
     }
-
     filesToSongs(files){
         let songs = []
         for (let file of files){
