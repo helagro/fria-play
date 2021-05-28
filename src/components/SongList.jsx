@@ -21,9 +21,11 @@ class SongList extends React.Component{
 
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
-                {this.state.songs.map(({image, title, artist, key}) => 
-                    (<SongInfo image={image} title={title} artist={artist} key={key}/>)
-                )}
+                {this.state.songs.length > 0 ? 
+                    this.state.songs.map(({image, title, artist, key}) => 
+                        (<SongInfo image={image} title={title} artist={artist} key={key}/>)) : 
+                    (<button onClick={()=>{this.driveInstance.changeLoginStatus()}}>Log in</button>)}
+                
             </div>
         )
     }

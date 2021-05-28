@@ -31,7 +31,7 @@ function getWindowDimensions() {
 const PlayList = () => {
   const { height, width } = useWindowDimensions();
 
-  if(width < 1000){
+  if(width < 1200){
     return PlaylistMobileView()
   } else{
     return PlayListComputerView()

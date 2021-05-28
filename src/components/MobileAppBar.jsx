@@ -35,6 +35,9 @@ class MobileAppBar extends React.Component{
         this.driveInstance = getDriveInstance()
         this.driveInstance.addListener(this.driveListener, this)
     }
+    componentWillUnmount(){
+        this.driveInstance.componentDetached(this)
+    }
 
 
     driveListener(event){

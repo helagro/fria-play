@@ -11,5 +11,19 @@ h1{
      display: grid;
      grid-template-columns: auto auto;
      column-gap: 1em;
-     margin: 0.3em 1.45em;
+     margin: 0.3em auto 0.9em auto;
+     max-width: 50em;
+     padding: 0 1.45em;
+ }
+
+ .songList{
+    max-width: 55em;
+    margin: 0 auto var(--app-bar-height) auto;
+    overflow: hidden !important;
+    padding: 0 2em;
+ }
+
+ .songList > *{
+     overflow: hidden !important;
+     height: 100%;
  }

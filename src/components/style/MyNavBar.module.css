@@ -5,7 +5,7 @@
 .containersContainer{
     width: 100%;
     background-color: var(--darker-field);
-    height: 3em;
+    height: var(--app-bar-height);
     position: fixed;
     bottom: 0;
 }

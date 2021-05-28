@@ -12,7 +12,6 @@
     left: 0;
     margin: auto; 
     padding: 0 1.6em;
-    position: fixed;
     right: 0;
     top: 0;
     height: var(--my-nav-bar-pc-height);

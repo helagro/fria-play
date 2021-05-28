@@ -19,7 +19,7 @@ function PlaylistMobileView() {
           <RoundedTextAndImageButton title="PLAY" image={logo23}/>
           <RoundedTextAndImageButton title="SHUFFLE" image={shuffle}/>
         </div>
-        <SongList/>
+        <SongList className={style.songList}/>
         <MyNavBar/>
       </div>
     )
