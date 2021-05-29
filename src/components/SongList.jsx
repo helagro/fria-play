@@ -2,7 +2,7 @@ import React from 'react'
 import Survival from "../components/img/survival.jpg"
 import SongInfo from "./SongInfo"
 import style from "./style/SongList.module.css"
-import googleDrive , {getDriveInstance} from "../logic/googleDriveApi"
+import {getDriveInstance} from "../logic/googleDriveApi"
 
 class SongList extends React.Component{
     constructor(){
@@ -24,8 +24,8 @@ class SongList extends React.Component{
                 {this.state.songs.length > 0 ? 
                     this.state.songs.map(({image, title, artist, key}) => 
                         (<SongInfo image={image} title={title} artist={artist} key={key}/>)) : 
+
                     (<button onClick={()=>{this.driveInstance.changeLoginStatus()}}>Log in</button>)}
-                
             </div>
         )
     }
@@ -39,21 +39,20 @@ class SongList extends React.Component{
 
     //ANCHOR other
     driveListener(event){
-        console.log("song list drivelistener", event)
         switch(event.event){
-            case "already setup": 
+            case "already setup":
             case "did init": 
-            case "sign in changed":return event.ctx.signInCouldHaveChanged(event)
+            case "sign in changed": return event.ctx.signInCouldHaveChanged(event)
         }
     }
     signInCouldHaveChanged(event){
         let ctx = event.ctx
         let isSignedIn = event.payload ? event.payload.isSignedIn : ctx.driveInstance.getIsLogin()
 
-        if(isSignedIn) ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
+        if(!isSignedIn) this.setState({songs:[]})
+        else if(this.state.songs.length === 0) ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
     }
     listFileListener(files, ctx){
-        console.log("listed:", files)
         ctx.setState({
             songs: ctx.filesToSongs(files)
         })

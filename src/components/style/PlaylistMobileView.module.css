@@ -21,6 +21,7 @@ h1{
     margin: 0 auto var(--app-bar-height) auto;
     overflow: hidden !important;
     padding: 0 2em;
+    height: 100%
  }
 
  .songList > *{

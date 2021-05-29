@@ -26,7 +26,7 @@ class MobileAppBar extends React.Component{
                 <div></div>
                 <img src={props.iconTwo} className={styles.iconTwo} onClick={()=>{this.setState({displayDropdown: !this.state.displayDropdown})}}/>
                 <ul className={styles.dropDown} style={{"display": this.state.displayDropdown ? "block" : "none"}}>
-                    <button onClick={()=>{this.driveInstance.changeLoginStatus(true, this, this.driveListener)}}>{this.state.isLoggedIn ? "Log out" : "Log in"}</button>
+                    <button onClick={() => getDriveInstance().changeLoginStatus()}>{this.state.isLoggedIn ? "Log out" : "Log in"}</button>
                 </ul>
             </div>
         )
@@ -40,8 +40,8 @@ class MobileAppBar extends React.Component{
     }
 
 
+    //ANCHOR other
     driveListener(event){
-        console.log("appbar drivelistener", event.event)
         switch(event.event){
             case "already setup": 
             case "did init": 

@@ -4,10 +4,8 @@ var driveInstance
 
 export function getDriveInstance(){
     if(driveInstance == null) driveInstance=new GoogleDriveHandler()
-
     return driveInstance
 }
-
 
 
 export class GoogleDriveHandler{
@@ -59,11 +57,7 @@ export class GoogleDriveHandler{
     changeLoginStatus(){
         let isLoggedIn = this.getIsLogin()
 
-        if (isLoggedIn){
-            gapi.auth2.getAuthInstance().signOut()
-        } else {
-            gapi.auth2.getAuthInstance().signIn();
-        }
+        isLoggedIn ? gapi.auth2.getAuthInstance().signOut() : gapi.auth2.getAuthInstance().signIn();
     }
     getIsLogin(){
         return gapi.auth2.getAuthInstance().isSignedIn.get()
@@ -74,16 +68,13 @@ export class GoogleDriveHandler{
         }).then(function(response) {
           var files = response.result.files;
           if (files && files.length > 0) {
-              console.log("else forever", files)
             files = files.filter(file => file.name.endsWith(".mp3"))  
             listener(files, ctx)
           }
         });
     }
     componentDetached(ctx){
-        console.log("gifted nike", driveInstance.tiedListenerObjects);
         driveInstance.removeComponentsListeners(ctx)
-        console.log("eye level", driveInstance.tiedListenerObjects, ctx.constructor.name);
     }
     removeComponentsListeners(ctx){
         driveInstance.tiedListenerObjects = driveInstance.tiedListenerObjects.filter(listenerObj => listenerObj.ctx.constructor.name !== ctx.constructor.name)
