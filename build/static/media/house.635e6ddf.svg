@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36.366" height="32.429" viewBox="0 0 36.366 32.429">
+  <g id="house" transform="translate(0.264 0.226)">
+    <g id="Group_2" data-name="Group 2" transform="translate(0 0)">
+      <g id="Group_1" data-name="Group 1" transform="translate(0 0)">
+        <path id="Path_10" data-name="Path 10" d="M35.518,40.438,18.5,27.978a.933.933,0,0,0-1.1,0L.381,40.438a.933.933,0,0,0,1.1,1.505L17.95,29.886,34.416,41.943a.933.933,0,0,0,1.1-1.505Z" transform="translate(0.001 -27.798)" fill="#818181" stroke="#818181" stroke-width="0.4"/>
+      </g>
+    </g>
+    <g id="Group_4" data-name="Group 4" transform="translate(3.958 14.357)">
+      <g id="Group_3" data-name="Group 3" transform="translate(0 0)">
+        <path id="Path_11" data-name="Path 11" d="M83.5,232.543a.933.933,0,0,0-.933.933v14.848H75.108v-8.1a4.664,4.664,0,0,0-9.329,0v8.1H58.318V233.476a.933.933,0,1,0-1.866,0v15.78a.933.933,0,0,0,.933.933h9.328a.932.932,0,0,0,.929-.86.7.7,0,0,0,0-.073v-9.038a2.8,2.8,0,1,1,5.6,0v9.038a.685.685,0,0,0,0,.072.932.932,0,0,0,.929.861H83.5a.933.933,0,0,0,.933-.933v-15.78A.933.933,0,0,0,83.5,232.543Z" transform="translate(-56.452 -232.543)" fill="#818181" stroke="#818181" stroke-width="0.4"/>
+      </g>
+    </g>
+  </g>
+</svg>

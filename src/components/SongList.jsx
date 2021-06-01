@@ -32,10 +32,10 @@ class SongList extends React.Component{
         )
     }
     componentDidMount(){
+        this.songHandlerInstance = getSongHandlerInstance()
+
         this.driveInstance = getDriveInstance()
         this.driveInstance.addListener(this.driveListener, this)
-
-        this.songHandlerInstance = getSongHandlerInstance()
     }
     componentWillUnmount(){
         this.driveInstance.componentDetached(this)
@@ -53,13 +53,18 @@ class SongList extends React.Component{
         let ctx = event.ctx
         let isSignedIn = event.payload ? event.payload.isSignedIn : ctx.driveInstance.getIsLogin()
 
-        if(!isSignedIn) this.setState({songs:[]})
-        else if(this.state.songs.length === 0) ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
+        if(!isSignedIn) {
+            ctx.setState({songs:[]})
+            ctx.songHandlerInstance.removeAll()
+        } else if(ctx.songHandlerInstance.hasSongs()) {
+            if(ctx.state.songs.length === 0) ctx.setState({songs: ctx.songHandlerInstance.songs})
+        } else {
+            ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
+        }
     }
     listFileListener(files, ctx){
-        ctx.setState({
-            songs: ctx.songHandlerInstance.filesToSongs(files)
-        })
+        ctx.songHandlerInstance.addSongsFromFiles(files)
+        ctx.setState({songs: ctx.songHandlerInstance.songs})
     }
 
 }

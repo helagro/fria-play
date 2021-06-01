@@ -15,7 +15,11 @@ export class SongHandler{
     possibleAlbumNames = ["Album 1", "Album 2", "Album 3", "Album 4"]
 
 
-    filesToSongs(files){
+    hasSongs(){
+        return this.songs.length != 0
+    }
+
+    addSongsFromFiles(files){
         for (let file of files){
             this.addSong(file.name, file.id)
         }
@@ -33,6 +37,10 @@ export class SongHandler{
             key: id
         })
     }
+    removeAll(){
+        this.songs = []
+        this.albums = []
+    }
 
     //Should get info from internet in the final product
     getSongInfo(songName){
@@ -42,7 +50,6 @@ export class SongHandler{
 
         return {artist, albumName, image}
     }
-
     getAlbumCover(artist, albumName){
         for(const albumObj of this.albums){
             if(albumObj.artist === artist && albumObj.albumName === albumName) return albumObj.albumCover
@@ -51,7 +58,7 @@ export class SongHandler{
         const albumCover = "https://source.unsplash.com/random/100x100?sig=" + this.albumCoverSig
         this.albumCoverSig++
         this.albums.push({artist: artist, albumName: albumName, albumCover: albumCover})
-        
+
         return albumCover
     }
 }
