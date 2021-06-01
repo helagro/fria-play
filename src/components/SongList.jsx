@@ -3,6 +3,7 @@ import Survival from "../components/img/survival.jpg"
 import SongInfo from "./SongInfo"
 import style from "./style/SongList.module.css"
 import {getDriveInstance} from "../logic/googleDriveApi"
+import {getSongHandlerInstance} from "../logic/songHandler"
 
 class SongList extends React.Component{
     constructor(){
@@ -14,6 +15,7 @@ class SongList extends React.Component{
     }
 
     driveInstance
+    songHandlerInstance
 
     //ANCHOR lifecycle
     render(){
@@ -32,6 +34,8 @@ class SongList extends React.Component{
     componentDidMount(){
         this.driveInstance = getDriveInstance()
         this.driveInstance.addListener(this.driveListener, this)
+
+        this.songHandlerInstance = getSongHandlerInstance()
     }
     componentWillUnmount(){
         this.driveInstance.componentDetached(this)
@@ -54,21 +58,10 @@ class SongList extends React.Component{
     }
     listFileListener(files, ctx){
         ctx.setState({
-            songs: ctx.filesToSongs(files)
+            songs: ctx.songHandlerInstance.filesToSongs(files)
         })
     }
-    filesToSongs(files){
-        let songs = []
-        for (let file of files){
-            songs.push({
-                title: file.name,
-                artist: "Bill Gates",
-                image: Survival,
-                key: file.id
-            })
-        }
-        return songs
-    }
+
 }
 
 export default SongList

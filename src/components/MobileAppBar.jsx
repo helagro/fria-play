@@ -1,7 +1,6 @@
-import React, { FunctionComponent, useState} from 'react';
+import React from 'react';
 import styles from "./style/MobileAppBar.module.css"
-import menu from "./img/ic-actions-menu.svg"
-import googleDrive, {getDriveInstance} from "../logic/googleDriveApi"
+import {getDriveInstance} from "../logic/googleDriveApi"
 
 class MobileAppBar extends React.Component{
     constructor(props){
