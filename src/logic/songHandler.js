@@ -40,6 +40,7 @@ export class SongHandler{
     removeAll(){
         this.songs = []
         this.albums = []
+        this.albumCoverSig = 0
     }
 
     //Should get info from internet in the final product

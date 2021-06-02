@@ -1,26 +1,11 @@
-class ObjA{
-    variable = 1
-
-    getVariable(){
-        return this.variable
-    }
+function checkImage(imageSrc, good, bad) {
+    var img = new Image(300, 300);
+    img.onload = (img) => good(img); 
+    img.onerror = bad;
+    img.src = imageSrc;
 }
 
-class ObjB{
-    variable = 2
-
-    getObjAVariable(){
-        return new ObjA().getVariable()
-    }
-}
-
-async function getObjAVariable(callback){
-    let variable = new ObjB().getObjAVariable()
-    callback(variable)
-}
-
-
-console.log(new ObjA().variable)
-getObjAVariable((variable) => console.log(variable))
-console.log(new ObjB().getObjAVariable())
-console.log("Nevermind...")
+checkImage("https://source.unsplash.com/random/100x100", function(img){ 
+    console.log("img", img)
+    document.body.appendChild(img)
+ }, function(){ alert("bad"); } );
