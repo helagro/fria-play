@@ -20,7 +20,6 @@ class SongList extends React.Component{
     //ANCHOR lifecycle
     render(){
         let props = this.props
-        console.log("rerendered", this.state.songs.length, " ", this.state.songs)
 
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
