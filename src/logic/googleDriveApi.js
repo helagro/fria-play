@@ -70,6 +70,8 @@ export class GoogleDriveHandler{
           if (files && files.length > 0) {
             files = files.filter(file => file.name.endsWith(".mp3"))  
             listener(files, ctx)
+          } else if(files.length == 0){
+              alert("No mp3 files found in the google account")
           }
         });
     }

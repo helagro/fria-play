@@ -24,13 +24,21 @@ class SongList extends React.Component{
 
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
-                {this.state.songs.length > 0 ? 
-                    this.state.songs.map(({image, title, artist, key}) => 
-                        (<SongInfo image={image} title={title} artist={artist} key={key}/>)) : 
-
-                    (<button onClick={()=>{this.driveInstance.changeLoginStatus()}}>Log in</button>)}
+                {this.getSongsAreaContent()}
             </div>
         )
+    }
+    getSongsAreaContent(){
+        if(this.state.songs.length > 0) {
+            return (this.state.songs.map(({image, title, artist, key}) => 
+                (<SongInfo image={image} title={title} artist={artist} key={key}/>)))
+        } 
+        else if(!this.driveInstance || this.driveInstance.getIsLogin()){
+            return (<p>Loading...</p>)
+        }
+        else{
+            return (<button onClick={()=>{this.driveInstance.changeLoginStatus()}}>Log in</button>)
+        }
     }
     componentDidMount(){
         this.songHandlerInstance = getSongHandlerInstance()
