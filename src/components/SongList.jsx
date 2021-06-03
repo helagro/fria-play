@@ -20,6 +20,7 @@ class SongList extends React.Component{
     //ANCHOR lifecycle
     render(){
         let props = this.props
+        console.log("rerendered", this.state.songs.length, " ", this.state.songs)
 
         return (
             <div className={[style.container, props.className].join(" ")} style={props.style}>
@@ -62,8 +63,12 @@ class SongList extends React.Component{
             ctx.driveInstance.listMediaFiles(ctx.listFileListener, ctx)
         }
     }
-    listFileListener(files, ctx){
-        ctx.songHandlerInstance.addSongsFromFiles(files)
+    async listFileListener(files, ctx){
+        //TODO possible memory leak
+        await ctx.songHandlerInstance.addSongsFromFiles(files, ctx, ctx.allSongsAreAddedListener)
+    }
+
+    allSongsAreAddedListener(ctx){
         ctx.setState({songs: ctx.songHandlerInstance.songs})
     }
 

@@ -17,7 +17,7 @@ import Playlist from "./components/Playlist"
 class App extends Component {
   render() {
     return (
-      <Router>
+      <Router basename="/fria-play/build">
        <Route exact path="/" component={Playlist} />
        <Route exact path="/player" component={Player} />
       </Router>

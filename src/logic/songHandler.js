@@ -18,24 +18,34 @@ export class SongHandler{
     hasSongs(){
         return this.songs.length != 0
     }
-
-    addSongsFromFiles(files){
-        for (let file of files){
-            this.addSong(file.name, file.id)
+    async addSongsFromFiles(files, ctx, allSongsAreAdded){
+        let amountToFinish = 0
+        const addedSongCallback = () => {
+            amountToFinish--
+            if(amountToFinish < 1) allSongsAreAdded(ctx)
         }
-        return this.songs
+
+        for (let file of files){
+            amountToFinish ++
+            this.addSong(file.name, file.id, addedSongCallback)
+            console.log("sent")
+        }
     }
 
-    addSong(name, id){
+
+
+    async addSong(name, id, addedSongCallback){
         const songInfo = this.getSongInfo(name)
 
         this.songs.push({
             title: name,
             artist: songInfo.artist,
             album:  songInfo.albumName,
-            image: songInfo.image,
+            image: await songInfo.image,
             key: id
         })
+
+        addedSongCallback()
     }
     removeAll(){
         this.songs = []
@@ -56,10 +66,38 @@ export class SongHandler{
             if(albumObj.artist === artist && albumObj.albumName === albumName) return albumObj.albumCover
         }
 
-        const albumCover = "https://source.unsplash.com/random/100x100?sig=" + this.albumCoverSig
-        this.albumCoverSig++
+        let albumCover = this.generateAlbumCover()
         this.albums.push({artist: artist, albumName: albumName, albumCover: albumCover})
-
         return albumCover
     }
+    generateAlbumCover() {
+        return new Promise(resolve => {
+            this.albumCoverSig++
+            let imageUrl = "https://source.unsplash.com/random/100x100?sig=" + this.albumCoverSig
+
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function(){
+                if(this.getResponseHeader("content-type") === "image/jpeg"){
+                    var response = xhr.responseText;
+                    var binary = ""
+                    
+                    for(let i=0;i<response.length;i++){
+                        binary += String.fromCharCode(response.charCodeAt(i) & 0xff);
+                    }
+
+                    let imageString = 'data:image/jpeg;base64,' + btoa(binary);
+                    resolve(imageString)
+                } else{
+                    resolve("invalid contet-type")
+                }
+            }
+        
+            xhr.overrideMimeType('text/plain; charset=x-user-defined');
+            xhr.open("GET", imageUrl, true);
+            xhr.send();
+
+            const onTimeOut = () => resolve("timed out")
+            setTimeout(onTimeOut, 5000)
+        })
+      }
 }
