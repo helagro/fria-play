@@ -19,7 +19,7 @@ function PlaylistMobileView() {
           <RoundedTextAndImageButton title="PLAY" image={logo23}/>
           <RoundedTextAndImageButton title="SHUFFLE" image={shuffle}/>
         </div>
-        <SongList className={style.songList}/>
+        <SongList className={style.songList} style={{"max-height":"unset"}}/>
         <MyNavBar/>
       </div>
     )
