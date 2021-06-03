@@ -2,6 +2,7 @@
   "name": "fria-play",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "proxy": "https://apis.google.com",
   "dependencies": {
     "@testing-library/jest-dom": "^5.12.0",
