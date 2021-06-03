@@ -70,6 +70,6 @@
 }
 
 .songList{
-    align-self: flex-end;
+    align-self: flex-start;
     width: 100%;
 }
