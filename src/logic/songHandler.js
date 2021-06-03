@@ -18,23 +18,15 @@ export class SongHandler{
     hasSongs(){
         return this.songs.length != 0
     }
-    async addSongsFromFiles(files, ctx, allSongsAreAdded){
-        let amountToFinish = 0
-        const addedSongCallback = () => {
-            amountToFinish--
-            if(amountToFinish < 1) allSongsAreAdded(ctx)
-        }
-
+    async addSongsFromFiles(files, ctx, songIsAdded){
         for (let file of files){
-            amountToFinish ++
-            this.addSong(file.name, file.id, addedSongCallback)
-            console.log("sent")
+            this.addSong(file.name, file.id, songIsAdded, ctx)
         }
     }
 
 
 
-    async addSong(name, id, addedSongCallback){
+    async addSong(name, id, songIsAdded, ctx){
         const songInfo = this.getSongInfo(name)
 
         this.songs.push({
@@ -45,7 +37,7 @@ export class SongHandler{
             key: id
         })
 
-        addedSongCallback()
+        songIsAdded(ctx)
     }
     removeAll(){
         this.songs = []

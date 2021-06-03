@@ -61,7 +61,7 @@
     }
 }
 
-@media screen and (min-width: 88em) {
+@media screen and (min-width: 80em) {
     .container{
         padding-bottom: 0.5em;
         border-bottom: 0.01em var(--dark-field) solid;

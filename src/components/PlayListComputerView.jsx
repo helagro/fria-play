@@ -24,7 +24,7 @@ function PlayListComputerView() {
                     </div>
                 </div>
                 <div className={style.songsPart}>
-                    <SongList className={style.songList} style={{"align-content":"end"}}/>
+                    <SongList className={style.songList}/>
                 </div>
             </div>
             <PlayControlsPc/>

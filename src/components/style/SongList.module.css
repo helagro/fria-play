@@ -1,14 +1,12 @@
 
 .container{
-    display: grid;
     row-gap: 1.1em;
     overflow-y: scroll;
     margin: 0 1em;
-    display: grid;
-    height: calc(100vh - var(--my-nav-bar-pc-height) - 4em);
-    box-sizing: content-box;
+    max-height: calc(100vh - var(--my-nav-bar-pc-height) - 4em);
 }
 
 .container > * {
     width: 100%;
+    margin: 0.5em 0;
 }

@@ -72,10 +72,10 @@ class SongList extends React.Component{
     }
     async listFileListener(files, ctx){
         //TODO possible memory leak
-        await ctx.songHandlerInstance.addSongsFromFiles(files, ctx, ctx.allSongsAreAddedListener)
+        await ctx.songHandlerInstance.addSongsFromFiles(files, ctx, ctx.songsisAddedListener)
     }
 
-    allSongsAreAddedListener(ctx){
+    songsisAddedListener(ctx){
         ctx.setState({songs: ctx.songHandlerInstance.songs})
     }
 
